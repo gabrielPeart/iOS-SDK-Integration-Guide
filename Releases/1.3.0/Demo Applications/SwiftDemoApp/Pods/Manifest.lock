@@ -1,0 +1,95 @@
+PODS:
+  - Firebase/Core (5.4.0):
+    - Firebase/CoreOnly
+    - FirebaseAnalytics (= 5.0.1)
+  - Firebase/CoreOnly (5.4.0):
+    - FirebaseCore (= 5.0.5)
+  - Firebase/DynamicLinks (5.4.0):
+    - Firebase/Core
+    - FirebaseDynamicLinks (= 3.0.1)
+  - Firebase/Messaging (5.4.0):
+    - Firebase/CoreOnly
+    - FirebaseMessaging (= 3.0.3)
+  - FirebaseAnalytics (5.0.1):
+    - FirebaseCore (~> 5.0)
+    - FirebaseInstanceID (~> 3.0)
+    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
+    - nanopb (~> 0.3)
+  - FirebaseCore (5.0.5):
+    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
+  - FirebaseDynamicLinks (3.0.1):
+    - FirebaseAnalytics (~> 5.0)
+  - FirebaseInstanceID (3.1.1):
+    - FirebaseCore (~> 5.0)
+  - FirebaseMessaging (3.0.3):
+    - FirebaseCore (~> 5.0)
+    - FirebaseInstanceID (~> 3.0)
+    - GoogleToolboxForMac/Logger (~> 2.1)
+    - Protobuf (~> 3.1)
+  - GoogleToolboxForMac/Defines (2.1.4)
+  - GoogleToolboxForMac/Logger (2.1.4):
+    - GoogleToolboxForMac/Defines (= 2.1.4)
+  - "GoogleToolboxForMac/NSData+zlib (2.1.4)":
+    - GoogleToolboxForMac/Defines (= 2.1.4)
+  - nanopb (0.3.8):
+    - nanopb/decode (= 0.3.8)
+    - nanopb/encode (= 0.3.8)
+  - nanopb/decode (0.3.8)
+  - nanopb/encode (0.3.8)
+  - ObjcExceptionBridging (1.0.1):
+    - ObjcExceptionBridging/ObjcExceptionBridging (= 1.0.1)
+  - ObjcExceptionBridging/ObjcExceptionBridging (1.0.1)
+  - OptimoveNotificationServiceExtension (1.2.0)
+  - OptimoveSDK (1.2.1):
+    - Firebase/Core (= 5.4.0)
+    - Firebase/DynamicLinks
+    - Firebase/Messaging
+    - OptiTrackCore
+    - XCGLogger (~> 6.0.4)
+  - OptiTrackCore (0.2.2)
+  - Protobuf (3.6.0)
+  - XCGLogger (6.0.4):
+    - XCGLogger/Core (= 6.0.4)
+  - XCGLogger/Core (6.0.4):
+    - ObjcExceptionBridging
+
+DEPENDENCIES:
+  - OptimoveNotificationServiceExtension (= 1.2.0)
+  - OptimoveSDK (= 1.2.1)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Firebase
+    - FirebaseAnalytics
+    - FirebaseCore
+    - FirebaseDynamicLinks
+    - FirebaseInstanceID
+    - FirebaseMessaging
+    - GoogleToolboxForMac
+    - nanopb
+    - ObjcExceptionBridging
+    - OptimoveNotificationServiceExtension
+    - OptimoveSDK
+    - OptiTrackCore
+    - Protobuf
+    - XCGLogger
+
+SPEC CHECKSUMS:
+  Firebase: d66f4f29c23f22d96808d9abc174d81d8eee968f
+  FirebaseAnalytics: b3628aea54c50464c32c393fb2ea032566e7ecc2
+  FirebaseCore: 42b3267233bd21a5abd54117ccc38ca3dd0f8e83
+  FirebaseDynamicLinks: d624a7adc81a8fd70d52be5a6a47a2bc0644b923
+  FirebaseInstanceID: f3f0657372592ecdfdfe2cac604a5a75758376a6
+  FirebaseMessaging: f43eb0c0e1da096e659de6f713038e74862a62cd
+  GoogleToolboxForMac: 91c824d21e85b31c2aae9bb011c5027c9b4e738f
+  nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
+  ObjcExceptionBridging: c30e00eb3700467e695faeea30e26e18bd445001
+  OptimoveNotificationServiceExtension: f1e43171f41e661c1299e01ba26299bad61711e6
+  OptimoveSDK: 5e4f0ae90ccdfdd889c10fecc67f6ee77978a64a
+  OptiTrackCore: 2004198a4088e3d0a8b2bac534f5d3d333777795
+  Protobuf: 0fc0ad8bec688b2a3017a139953e01374fedbd5f
+  XCGLogger: 4fc1bc0bdd5828cb8dc8da7a843536cda1bea8f3
+
+PODFILE CHECKSUM: faf61361bf6b22b882b033210d54f62c059470e2
+
+COCOAPODS: 1.5.3
