@@ -534,7 +534,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5F5C979EC84C01017D864B5C /* Pods-SwiftDemoApp.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = SwiftDemoApp/SwiftDemoApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
@@ -553,7 +552,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 166EBE781B46A47BDEAA4717 /* Pods-SwiftDemoApp.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = SwiftDemoApp/SwiftDemoApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;

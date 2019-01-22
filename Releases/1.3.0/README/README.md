@@ -35,7 +35,7 @@ To get started, please follow these instructions:
 1. You have a paid development account for your iOS app, and valid certificates for remote notifications or APN Auth key.
 2. The app's Deployment Target is at least iOS 10.0
 3. Your Cocoapods version is 1.5 or above
-4. If you are already using Firebase in your current application, please make sure to use Firebase version of 5.9.0 (Optimove SDK is dependent on Firebase version 5.9.0)
+4. If you are already using Firebase in your current application, please make sure to use Firebase version of 5.15.0 (Optimove SDK is dependent on Firebase version 5.15.0)
 
 
 ### 2. Provide your iOS app details: <br>
@@ -76,7 +76,7 @@ In order to work with the Optimove SDK for your iOS native app, need to download
 
 1. In your Podfile, add the following:
 
-`pod 'OptimoveSDK','1.2.3'` <br>
+`pod 'OptimoveSDK','1.3.0'` <br>
 
 
 Example:
@@ -86,16 +86,16 @@ platform :ios, '10.0'
 target 'iOSDemo' do
   use_frameworks!
 
-  pod 'OptimoveSDK','1.2.3'
+  pod 'OptimoveSDK','1.3.0'
 end
 ```
 
 
 2. `OptimoveSDK` relies on other modules as infrastructure, such as `Firebase`, so when you download `OptimoveSDK` you get the following frameworks:
 
-* `Firebase/Core` version `5.9.0`
-* `Firebase/Messaging`
-* `Firebase/DynamicLinks`
+* `Firebase/Core` version `5.15.0`
+* `Firebase/Messaging` version `3.2.2`
+* `Firebase/DynamicLinks` version `3.3.0`
 
 ### 3. If you are using Optipush, see additional configurations [here](https://github.com/optimove-tech/Optipush-Guide/tree/master/Opitpush%20for%20iOS#optipush-configuration)  
     

@@ -35,7 +35,7 @@ To get started, please follow these instructions:
 1. You have a paid development account for your iOS app, and valid certificates for remote notifications or APN Auth key.
 2. The app's Deployment Target is at least iOS 10.0
 3. Your Cocoapods version is 1.5 or above
-4. You have a Firebase version of 5.9.0 (Optimove SDK is dependent on Firebase version 5.9.0)
+4. If you are already using Firebase in your current application, please make sure to use Firebase version of 5.15.0 (Optimove SDK is dependent on Firebase version 5.15.0)
 
 
 ### 2. Provide your iOS app details: <br>
@@ -76,7 +76,7 @@ In order to work with the Optimove SDK for your iOS native app, need to download
 
 1. In your Podfile, add the following:
 
-`pod 'OptimoveSDK','1.2.3'` <br>
+`pod 'OptimoveSDK','1.3.0'` <br>
 
 
 Example:
@@ -86,16 +86,16 @@ platform :ios, '10.0'
 target 'iOSDemo' do
   use_frameworks!
 
-  pod 'OptimoveSDK','1.2.3'
+  pod 'OptimoveSDK','1.3.0'
 end
 ```
 
 
 2. `OptimoveSDK` relies on other modules as infrastructure, such as `Firebase`, so when you download `OptimoveSDK` you get the following frameworks:
 
-* `Firebase/Core` version `5.9.0`
-* `Firebase/Messaging`
-* `Firebase/DynamicLinks`
+* `Firebase/Core` version `5.15.0`
+* `Firebase/Messaging` version `3.2.2`
+* `Firebase/DynamicLinks` version `3.3.0`
 
 ### 3. If you are using Optipush, see additional configurations [here](https://github.com/optimove-tech/Optipush-Guide/tree/master/Opitpush%20for%20iOS#optipush-configuration)  
     
@@ -234,8 +234,8 @@ You will also need to include the following steps to complete the basic setup:
 
  - Tracking User Activities and Events
  - [Stitching App Visitors to Registered Customer IDs](https://github.com/optimove-tech/A/blob/master/i/V1.2/swift/README.md#stitching-app-visitors-to-registered-customer-ids)
-
- > **Note**: Optimove collects the **IDFA** for tracking purposes. When submitting to the app store, if asked "Does this app use the Advertising Identifier (IDFA)?", choose 'Yes' and make sure to **check** the folllowing 3 boxes:
+ 
+  > **Note**: Optimove collects the **IDFA** for tracking purposes. When submitting to the app store, if asked "Does this app use the Advertising Identifier (IDFA)?", choose 'Yes' and make sure to **check** the folllowing 3 boxes:
  > 1.  “Attribute this app installation to a previously served advertisement”
  > 2.  “Attribute an action taken within this app to a previously served advertisement”
  > 3.  “I, YOUR_NAME, confirm that this app, and any third party…”
@@ -243,7 +243,6 @@ You will also need to include the following steps to complete the basic setup:
 >You should  _not_  check the box labeled “Serve advertisements within the app” unless you are actually going to display ads. 
 
 <br>
-
 
 # <a id="Advanced Setup"></a>Advanced Setup
 Use the Advanced Setup (optional) in order to track visitor and customer customized actions and events.
