@@ -95,7 +95,9 @@ extension OptiTrack
     
     private func setupPluginFlags() {
         let pluginFlags = ["fla", "java", "dir", "qt", "realp", "pdf", "wma", "gears"]
-        let pluginValues = OptimoveUserDefaults.shared.initialVisitorId!.splitedBy(length: 2).map {Int($0,radix:16)!/2}.map { $0.description}
+        let pluginValues = OptimoveUserDefaults.shared.initialVisitorId!.splitedBy(length: 2)
+            .map {Int($0,radix:16)!/2}
+            .map { $0.description}
         for i in 0..<pluginFlags.count {
             let pluginFlag = pluginFlags[i]
             let pluginValue = pluginValues[i]

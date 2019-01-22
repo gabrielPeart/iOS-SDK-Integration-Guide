@@ -15,7 +15,10 @@
 @implementation NotificationService
 - (void)didReceiveNotificationRequest:(UNNotificationRequest *)request withContentHandler:(void (^)(UNNotificationContent * _Nonnull))contentHandler {
     
-    NotificationExtensionTenantInfo* info = [[NotificationExtensionTenantInfo alloc] initWithEndpoint:@"https://appcontrollerproject-developer.firebaseapp.com" token:@"demo_apps" version:@"1.0.0" appBundleId:@"com.optimove.sdk.demo.objc"];
+    NotificationExtensionTenantInfo* info = [[NotificationExtensionTenantInfo alloc] initWithEndpoint:@"https://appcontrollerproject-developer.firebaseapp.com"
+                                                                                                token:@"demo_apps"
+                                                                                              version:@"1.0.0"
+                                                                                          appBundleId:@"com.optimove.sdk.demo.objc"];
     self.optimoveNotificationExtension = [[OptimoveNotificationServiceExtension alloc]initWithTenantInfo:info];
     [self.optimoveNotificationExtension didReceive:request withContentHandler:contentHandler];
     if (!self.optimoveNotificationExtension.isHandledByOptimove) {

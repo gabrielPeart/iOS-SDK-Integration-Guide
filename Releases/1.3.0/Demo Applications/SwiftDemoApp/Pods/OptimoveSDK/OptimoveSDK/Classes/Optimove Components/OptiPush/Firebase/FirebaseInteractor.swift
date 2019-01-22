@@ -16,19 +16,19 @@ protocol OptimoveMbaasRegistrationHandling:class
     func handleRegistrationTokenRefresh(token:String)
 }
 
-class FirebaseInteractor:NSObject
+class FirebaseInteractor:NSObject,OptipushServiceInfra
 {
     //MARK: - Properties
     weak var delegate: OptimoveMbaasRegistrationHandling?
     var appController: FirebaseOptions?
     var clientServiceOptions:FirebaseOptions?
-    
-    var reportEndPoint:String
+    var pushTopicsRegistrationEndpoint:String
+
     
     //MARK: Constructors
     override init()
     {
-        reportEndPoint = ""
+        pushTopicsRegistrationEndpoint = ""
     }
     
     //MARK: - static methods
@@ -59,11 +59,11 @@ class FirebaseInteractor:NSObject
     func setupFirebase(from firebaseMetaData: FirebaseProjectKeys,
                        clientFirebaseMetaData:ClientsServiceProjectKeys,
                        delegate:OptimoveMbaasRegistrationHandling,
-                       endPointForTopics:String)
+                       pushTopicsRegistrationEndpoint:String)
     {
-        setMessaginDelegate()
         OptiLogger.debug("Setup firebase")
-        reportEndPoint = endPointForTopics
+
+        self.pushTopicsRegistrationEndpoint = pushTopicsRegistrationEndpoint.last == "/" ? pushTopicsRegistrationEndpoint : "\(pushTopicsRegistrationEndpoint)/"
         self.delegate = delegate
         self.appController = FirebaseOptionsBuilder()
             .set(appId: firebaseMetaData.appid)
@@ -84,14 +84,14 @@ class FirebaseInteractor:NSObject
         guard let appController = self.appController,
             let clientServiceOptions = self.clientServiceOptions
             else {return }
-        
+
         setupAppController(appController)
         setupSdkController(clientServiceOptions)
+        setMessaginDelegate()
         if OptimoveUserDefaults.shared.fcmToken == nil && Messaging.messaging().fcmToken != nil{
             optimoveReceivedRegistrationToken(Messaging.messaging().fcmToken!)
         }
-        
-        
+
         OptiLogger.debug("firebase finish setup")
     }
     
@@ -189,7 +189,7 @@ extension FirebaseInteractor:MessagingDelegate
             }
         } else {
             guard let fcm = OptimoveUserDefaults.shared.fcmToken else {return }
-            let endPoint = reportEndPoint + "registerClientToTopics"
+            let endPoint = pushTopicsRegistrationEndpoint + "registerClientToTopics"
             let urlEndpoint = URL(string: endPoint)!
             let json = buildTopicRegistrationJson(fcm, [topic])
             NetworkManager.post(toUrl: urlEndpoint, json: json) { (data, error) in
@@ -216,7 +216,7 @@ extension FirebaseInteractor:MessagingDelegate
             }
         } else {
             guard let fcm = OptimoveUserDefaults.shared.fcmToken else {return }
-            let endPoint = reportEndPoint + "unregisterClientFromTopics"
+            let endPoint = pushTopicsRegistrationEndpoint + "unregisterClientFromTopics"
             let urlEndpoint = URL(string: endPoint)!
             let json = buildTopicRegistrationJson(fcm, [topic])
             
@@ -239,8 +239,8 @@ extension FirebaseInteractor:MessagingDelegate
     private func buildTopicRegistrationJson(_ fcmToken: String, _ topics: [String]) -> Data
     {
         var requestJsonData = [String: Any]()
-        requestJsonData[Keys.Topics.fcmToken.rawValue] = fcmToken
-        requestJsonData[Keys.Topics.topics.rawValue] = topics
+        requestJsonData[OptimoveKeys.Topics.fcmToken.rawValue] = fcmToken
+        requestJsonData[OptimoveKeys.Topics.topics.rawValue] = topics
         return try! JSONSerialization.data(withJSONObject: requestJsonData, options: .prettyPrinted)
     }
 }

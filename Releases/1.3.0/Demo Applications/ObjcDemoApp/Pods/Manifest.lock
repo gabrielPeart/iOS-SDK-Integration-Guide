@@ -1,95 +1,132 @@
 PODS:
-  - Firebase/Core (5.4.0):
+  - Firebase/Core (5.15.0):
     - Firebase/CoreOnly
-    - FirebaseAnalytics (= 5.0.1)
-  - Firebase/CoreOnly (5.4.0):
-    - FirebaseCore (= 5.0.5)
-  - Firebase/DynamicLinks (5.4.0):
-    - Firebase/Core
-    - FirebaseDynamicLinks (= 3.0.1)
-  - Firebase/Messaging (5.4.0):
-    - Firebase/CoreOnly
-    - FirebaseMessaging (= 3.0.3)
-  - FirebaseAnalytics (5.0.1):
-    - FirebaseCore (~> 5.0)
-    - FirebaseInstanceID (~> 3.0)
-    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
+    - FirebaseAnalytics (= 5.4.0)
+  - Firebase/CoreOnly (5.15.0):
+    - FirebaseCore (= 5.1.10)
+  - FirebaseAnalytics (5.4.0):
+    - FirebaseCore (~> 5.1)
+    - FirebaseInstanceID (~> 3.3)
+    - GoogleAppMeasurement (= 5.4.0)
+    - GoogleUtilities/AppDelegateSwizzler (~> 5.2)
+    - GoogleUtilities/MethodSwizzler (~> 5.2)
+    - GoogleUtilities/Network (~> 5.2)
+    - "GoogleUtilities/NSData+zlib (~> 5.2)"
     - nanopb (~> 0.3)
-  - FirebaseCore (5.0.5):
-    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
-  - FirebaseDynamicLinks (3.0.1):
-    - FirebaseAnalytics (~> 5.0)
-  - FirebaseInstanceID (3.1.1):
-    - FirebaseCore (~> 5.0)
-  - FirebaseMessaging (3.0.3):
-    - FirebaseCore (~> 5.0)
+  - FirebaseAnalyticsInterop (1.1.0)
+  - FirebaseCore (5.1.10):
+    - GoogleUtilities/Logger (~> 5.2)
+  - FirebaseDynamicLinks (3.3.0):
+    - FirebaseAnalytics (~> 5.1)
+    - FirebaseAnalyticsInterop (~> 1.0)
+    - FirebaseCore (~> 5.1)
+  - FirebaseInstanceID (3.3.0):
+    - FirebaseCore (~> 5.1)
+    - GoogleUtilities/Environment (~> 5.3)
+    - GoogleUtilities/UserDefaults (~> 5.3)
+  - FirebaseMessaging (3.2.2):
+    - FirebaseAnalyticsInterop (~> 1.1)
+    - FirebaseCore (~> 5.1)
     - FirebaseInstanceID (~> 3.0)
-    - GoogleToolboxForMac/Logger (~> 2.1)
+    - GoogleUtilities/Environment (~> 5.2)
+    - GoogleUtilities/Reachability (~> 5.2)
     - Protobuf (~> 3.1)
-  - GoogleToolboxForMac/Defines (2.1.4)
-  - GoogleToolboxForMac/Logger (2.1.4):
-    - GoogleToolboxForMac/Defines (= 2.1.4)
-  - "GoogleToolboxForMac/NSData+zlib (2.1.4)":
-    - GoogleToolboxForMac/Defines (= 2.1.4)
-  - nanopb (0.3.8):
-    - nanopb/decode (= 0.3.8)
-    - nanopb/encode (= 0.3.8)
-  - nanopb/decode (0.3.8)
-  - nanopb/encode (0.3.8)
-  - ObjcExceptionBridging (1.0.1):
-    - ObjcExceptionBridging/ObjcExceptionBridging (= 1.0.1)
-  - ObjcExceptionBridging/ObjcExceptionBridging (1.0.1)
-  - OptimoveNotificationServiceExtension (1.2.0)
-  - OptimoveSDK (1.2.1):
-    - Firebase/Core (= 5.4.0)
-    - Firebase/DynamicLinks
-    - Firebase/Messaging
-    - OptiTrackCore
-    - XCGLogger (~> 6.0.4)
-  - OptiTrackCore (0.2.2)
-  - Protobuf (3.6.0)
-  - XCGLogger (6.0.4):
-    - XCGLogger/Core (= 6.0.4)
-  - XCGLogger/Core (6.0.4):
-    - ObjcExceptionBridging
+  - GoogleAppMeasurement (5.4.0):
+    - GoogleUtilities/AppDelegateSwizzler (~> 5.2)
+    - GoogleUtilities/MethodSwizzler (~> 5.2)
+    - GoogleUtilities/Network (~> 5.2)
+    - "GoogleUtilities/NSData+zlib (~> 5.2)"
+    - nanopb (~> 0.3)
+  - GoogleUtilities (5.3.6):
+    - GoogleUtilities/AppDelegateSwizzler (= 5.3.6)
+    - GoogleUtilities/Environment (= 5.3.6)
+    - GoogleUtilities/ISASwizzler (= 5.3.6)
+    - GoogleUtilities/Logger (= 5.3.6)
+    - GoogleUtilities/MethodSwizzler (= 5.3.6)
+    - GoogleUtilities/Network (= 5.3.6)
+    - "GoogleUtilities/NSData+zlib (= 5.3.6)"
+    - GoogleUtilities/Reachability (= 5.3.6)
+    - GoogleUtilities/SwizzlerTestHelpers (= 5.3.6)
+    - GoogleUtilities/UserDefaults (= 5.3.6)
+  - GoogleUtilities/AppDelegateSwizzler (5.3.6):
+    - GoogleUtilities/Environment
+    - GoogleUtilities/Logger
+    - GoogleUtilities/Network
+  - GoogleUtilities/Environment (5.3.6)
+  - GoogleUtilities/ISASwizzler (5.3.6)
+  - GoogleUtilities/Logger (5.3.6):
+    - GoogleUtilities/Environment
+  - GoogleUtilities/MethodSwizzler (5.3.6):
+    - GoogleUtilities/Logger
+  - GoogleUtilities/Network (5.3.6):
+    - GoogleUtilities/Logger
+    - "GoogleUtilities/NSData+zlib"
+    - GoogleUtilities/Reachability
+  - "GoogleUtilities/NSData+zlib (5.3.6)"
+  - GoogleUtilities/Reachability (5.3.6):
+    - GoogleUtilities/Logger
+  - GoogleUtilities/SwizzlerTestHelpers (5.3.6)
+  - GoogleUtilities/UserDefaults (5.3.6):
+    - GoogleUtilities/Logger
+  - nanopb (0.3.901):
+    - nanopb/decode (= 0.3.901)
+    - nanopb/encode (= 0.3.901)
+  - nanopb/decode (0.3.901)
+  - nanopb/encode (0.3.901)
+  - OptimoveNotificationServiceExtension (1.3.0)
+  - OptimoveSDK (1.3.0):
+    - Firebase/Core (= 5.15.0)
+    - FirebaseAnalytics (= 5.4.0)
+    - FirebaseAnalyticsInterop (= 1.1.0)
+    - FirebaseCore (= 5.1.10)
+    - FirebaseDynamicLinks (= 3.3.0)
+    - FirebaseInstanceID (= 3.3.0)
+    - FirebaseMessaging (= 3.2.2)
+    - GoogleAppMeasurement (= 5.4.0)
+    - GoogleUtilities (= 5.3.6)
+    - nanopb (= 0.3.901)
+    - OptiTrackCore (= 1.3.0)
+    - Protobuf (= 3.6.1)
+  - OptiTrackCore (1.3.0)
+  - Protobuf (3.6.1)
 
 DEPENDENCIES:
-  - OptimoveNotificationServiceExtension (= 1.2.0)
-  - OptimoveSDK (= 1.2.1)
+  - OptimoveNotificationServiceExtension (= 1.3.0)
+  - OptimoveSDK (= 1.3.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Firebase
     - FirebaseAnalytics
+    - FirebaseAnalyticsInterop
     - FirebaseCore
     - FirebaseDynamicLinks
     - FirebaseInstanceID
     - FirebaseMessaging
-    - GoogleToolboxForMac
+    - GoogleAppMeasurement
+    - GoogleUtilities
     - nanopb
-    - ObjcExceptionBridging
     - OptimoveNotificationServiceExtension
     - OptimoveSDK
     - OptiTrackCore
     - Protobuf
-    - XCGLogger
 
 SPEC CHECKSUMS:
-  Firebase: d66f4f29c23f22d96808d9abc174d81d8eee968f
-  FirebaseAnalytics: b3628aea54c50464c32c393fb2ea032566e7ecc2
-  FirebaseCore: 42b3267233bd21a5abd54117ccc38ca3dd0f8e83
-  FirebaseDynamicLinks: d624a7adc81a8fd70d52be5a6a47a2bc0644b923
-  FirebaseInstanceID: f3f0657372592ecdfdfe2cac604a5a75758376a6
-  FirebaseMessaging: f43eb0c0e1da096e659de6f713038e74862a62cd
-  GoogleToolboxForMac: 91c824d21e85b31c2aae9bb011c5027c9b4e738f
-  nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
-  ObjcExceptionBridging: c30e00eb3700467e695faeea30e26e18bd445001
-  OptimoveNotificationServiceExtension: f1e43171f41e661c1299e01ba26299bad61711e6
-  OptimoveSDK: 5e4f0ae90ccdfdd889c10fecc67f6ee77978a64a
-  OptiTrackCore: 2004198a4088e3d0a8b2bac534f5d3d333777795
-  Protobuf: 0fc0ad8bec688b2a3017a139953e01374fedbd5f
-  XCGLogger: 4fc1bc0bdd5828cb8dc8da7a843536cda1bea8f3
+  Firebase: 8bb9268bff82374f2cbaaabb143e725743c316ae
+  FirebaseAnalytics: c06f9d70577d79074214700a71fd5d39de5550fb
+  FirebaseAnalyticsInterop: e5f21be9af6548372e2f0815834ff909bff395a2
+  FirebaseCore: 35747502d9e8c6ee217385ad04446c7c2aaf9c5c
+  FirebaseDynamicLinks: c713da5f75c324f38fb2d57164bbc1c461aa6739
+  FirebaseInstanceID: e2fa4cb35ef5558c200f7f0ad8a53e212215f93e
+  FirebaseMessaging: b412996f6a09337d232bb3a6676ce4d1f353d024
+  GoogleAppMeasurement: 98b71f5e04142793729a5ef23e5b96651ff4b70f
+  GoogleUtilities: 95996bea7c7d9b8fb811b7507669a4a8762f80c7
+  nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
+  OptimoveNotificationServiceExtension: ac15268e5d2eff855d0376e22be615e0e62fc78a
+  OptimoveSDK: 5ff71144a088b4083afc082e44d08b53dc49109c
+  OptiTrackCore: f8e6bd41d156303647fb535c04c2bff2a8e6a17d
+  Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
 
-PODFILE CHECKSUM: a1868bb874d9006e3246b5e59e2e6b77ef2ede8b
+PODFILE CHECKSUM: c734b72f3e431e6afd3c746836999a408e48c171
 
 COCOAPODS: 1.5.3

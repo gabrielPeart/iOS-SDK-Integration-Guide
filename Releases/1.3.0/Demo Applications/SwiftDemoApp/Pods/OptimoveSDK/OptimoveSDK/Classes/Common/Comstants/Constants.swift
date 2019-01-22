@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct Keys
+struct OptimoveKeys
 {
     enum Registration: String
     {
@@ -31,18 +31,17 @@ struct Keys
         case successStatus          = "success_status"
         case optOutStatus           = "opt-out_status"
     }
-    
+
     enum Configuration: String
     {
-    
+
         case ios                                        = "ios"
 
-        
-  
         //MARK:  - events configurations
 
         case setAdvertisingId                           = "set_advertising_id"
-
+        case setUserId                                  = "set_user_id_event"
+        case setEmail                                   = "set_email_event"
         case advertisingId                              = "advertising_id"
 
         case deviceId                                   = "device_id"
@@ -59,8 +58,8 @@ struct Keys
         case campaignType                               = "campaign_type"
         case notificationOpened                         = "notification_opened"
         case notificationDismissed                      = "notification_dismissed"
-       
-        case originalVisitorId                  = "originalVisitorId"
+
+        case originalVisitorId                          = "originalVisitorId"
         case userId                                     = "user_id"
         case realtimeUserId                             = "userId"
         case realtimeupdatedVisitorId                   = "updatedVisitorId"
@@ -72,7 +71,7 @@ struct Keys
         case email                                      = "email"
 
     }
-    
+
     enum Notification : String
     {
         case title                  = "title"
@@ -90,18 +89,18 @@ struct Keys
         case isOptimoveSdkCommand   = "is_optimove_sdk_command"
         case command                = "command"
     }
-    
+
     enum Topics:String
     {
         case fcmToken   = "fcmToken"
         case topics     = "topics"
     }
-    
+
     struct AddtionalAttributesValues
     {
         static let eventDeviceType = "Mobile"
         static let eventPlatform    = "iOS"
-        static let eventOs          =  "iOS \(OptimoveUserDefaults.shared.deviceOs)"
+        static let eventOs          =  "iOS \(ProcessInfo().operatingSystemVersionOnlyString)"
         static let eventNativeMobile = true
     }
     struct AdditionalAttributesKeys
@@ -134,7 +133,7 @@ enum HttpMethod: String
     case options    = "OPTIONS"
     case connect    = "CONNECT"
 }
-
+//
 enum MediaType: String
 {
     case json = "application/json"
@@ -160,11 +159,25 @@ var CustomerID :String? {
         return OptimoveUserDefaults.shared.customerID
     }
 }
+var UserEmail :String? {
+    get
+    {
+        return OptimoveUserDefaults.shared.userEmail
+    }
+}
 var VisitorID :String
 {
     get
     {
         return OptimoveUserDefaults.shared.visitorID!
+    }
+}
+
+var InitialVisitorID :String
+{
+    get
+    {
+        return OptimoveUserDefaults.shared.initialVisitorId!
     }
 }
 var DeviceID : String
@@ -174,13 +187,3 @@ var DeviceID : String
         return SHA1.hexString(from:UIDevice.current.identifierForVendor?.uuidString ?? "")!.replacingOccurrences(of: " ", with: "")
     }
 }
-var OSVersion : String
-{
-    get
-    {
-        return OptimoveUserDefaults.shared.deviceOs
-    }
-}
-
-
-

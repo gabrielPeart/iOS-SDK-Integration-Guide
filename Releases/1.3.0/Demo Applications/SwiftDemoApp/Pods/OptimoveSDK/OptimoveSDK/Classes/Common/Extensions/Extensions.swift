@@ -62,7 +62,16 @@ extension URL
     }
 }
 
-
-extension Notification.Name {
+extension Notification.Name
+{
     public static let internetStatusChanged = Notification.Name.init("internetStatusChanged")
+}
+
+extension ProcessInfo
+{
+    var operatingSystemVersionOnlyString:String {
+        get {
+            return "\(self.operatingSystemVersion.majorVersion).\(self.operatingSystemVersion.minorVersion).\(self.operatingSystemVersion.patchVersion)"
+        }
+    }
 }

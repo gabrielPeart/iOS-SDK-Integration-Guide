@@ -8,10 +8,11 @@ class Opt :OptimoveCoreEvent
         return ""
     }
     var parameters: [String : Any]
-    {
-        return [Keys.Configuration.timestamp.rawValue   : Int(Date().timeIntervalSince1970),
-                Keys.Configuration.appNs.rawValue       : Bundle.main.bundleIdentifier!,
-                Keys.Configuration.deviceId.rawValue    : DeviceID]
+    
+    init() {
+        self.parameters = [OptimoveKeys.Configuration.timestamp.rawValue   : Int(Date().timeIntervalSince1970),
+                           OptimoveKeys.Configuration.appNs.rawValue       : Bundle.main.bundleIdentifier!,
+                           OptimoveKeys.Configuration.deviceId.rawValue    : DeviceID]
     }
 }
 
@@ -19,7 +20,7 @@ class OptipushOptIn: Opt
 {
     override var name: String
     {
-        return Keys.Configuration.optipushOptIn.rawValue
+        return OptimoveKeys.Configuration.optipushOptIn.rawValue
     }
 }
 
@@ -27,6 +28,6 @@ class OptipushOptOut: Opt
 {
     override var name: String
     {
-        return Keys.Configuration.optipushOptOut.rawValue
+        return OptimoveKeys.Configuration.optipushOptOut.rawValue
     }
 }

@@ -10,10 +10,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        let url =  "https://appcontrollerproject-developer.firebaseapp.com"
+        let url = "https://appcontrollerproject-developer.firebaseapp.com"
         let token = "demo_apps"
         let version = "1.0.0"
-        let info = OptimoveTenantInfo(url: url, token: token, version: version, hasFirebase: false, useFirebaseMessaging: false)
+        let info = OptimoveTenantInfo(url: url,
+                                      token: token,
+                                      version: version,
+                                      hasFirebase: false,
+                                      useFirebaseMessaging: false)
         Optimove.sharedInstance.configure(for: info)
         
         UNUserNotificationCenter.current().delegate = self

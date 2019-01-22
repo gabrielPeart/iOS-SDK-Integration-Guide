@@ -1,10 +1,7 @@
 //
 //  NotificationService.swift
 //  Notification Extension
-//
-//  Created by Elkana Orbach on 04/07/2018.
-//  Copyright © 2018 Optimove. All rights reserved.
-//
+
 
 import UserNotifications
 import OptimoveNotificationServiceExtension
@@ -16,8 +13,7 @@ class NotificationService: UNNotificationServiceExtension {
     var optimoveNotificationServiceExtension:OptimoveNotificationServiceExtension!
 
     override func didReceive(_ request: UNNotificationRequest, withContentHandler contentHandler: @escaping (UNNotificationContent) -> Void) {
-        let tenantInfo = NotificationExtensionTenantInfo(endpoint: "https://appcontrollerproject-developer.firebaseapp.com", token: "demo_apps", version: "1.0.0", appBundleId: "com.optimove.sdk.demo.swift")
-        optimoveNotificationServiceExtension = OptimoveNotificationServiceExtension(tenantInfo: tenantInfo)
+        optimoveNotificationServiceExtension = OptimoveNotificationServiceExtension(appBundleId: "com.optimove.sdk.demo.swift")
         optimoveNotificationServiceExtension.didReceive(request, withContentHandler: contentHandler)
         if !optimoveNotificationServiceExtension.isHandledByOptimove {
             self.contentHandler = contentHandler

@@ -1,4 +1,5 @@
 
+
 - [Introduction](#Introduction)
 - [Basic Setup](#Basic%20Setup)
 - [Advanced Setup](#Advanced%20Setup)
@@ -33,7 +34,7 @@ To get started, please follow these instructions:
 1. You have a paid development account for your iOS app, and valid certificates for remote notifications or APN Auth key.
 2. The app's Deployment Target is at least iOS 10.0
 3. Your Cocoapods version is 1.5 or above
-4. You have a Firebase version of 5.4.0 (Optimove SDK is dependent on Firebase version 5.4.0)
+4. You have a Firebase version of 5.9.0 (Optimove SDK is dependent on Firebase version 5.9.0)
 
 
 ### 2. Provide your iOS app details: <br>
@@ -74,7 +75,7 @@ In order to work with the Optimove SDK for your iOS native app, need to download
 
 1. In your Podfile, add the following:
 
-`pod OptimoveSDK`
+`pod 'OptimoveSDK','1.2.3'`<br>
 
 Since _`OptimoveSDK`_ is written in `swift`, you must add `use_modular_headers!` globaly.
 
@@ -85,7 +86,7 @@ platform :ios, '10.0'
 use_modular_headers!
 
 target 'iOSDemo' do
-  pod 'OptimoveSDK','1.2.1'
+  pod 'OptimoveSDK','1.2.3'
 end
 ```
 
@@ -93,7 +94,7 @@ Also, Add an additional 'dummy' swift file to your project in order to enable pr
 
 2. `OptimoveSDK` relies on other modules as infrastructure, such as `Firebase`, so when you download `OptimoveSDK` you get the following frameworks:
 
-* `Firebase/Core` version `5.4.0`
+* `Firebase/Core` version `5.9.0`
 * `Firebase/Messaging`
 * `Firebase/DynamicLinks`
 
@@ -174,6 +175,7 @@ Still in `AppDelegate`, please implement the following callbacks:
 ```
 
 <br>
+
 ### Forward Firebase Tokens to Optimove
 
 > Skip this version if your app **does not** implement a Firebase `FIRMessagingDelegate`
@@ -237,10 +239,18 @@ You will also need to include the following steps to complete the basic setup:
 
  - Tracking User Activities and Events
  - [Stitching App Visitors to Registered Customer IDs](https://github.com/optimove-tech/A/blob/master/i/V1.2/swift/README.md#stitching-app-visitors-to-registered-customer-ids)
+ 
+  > **Note**: Optimove collects the **IDFA** for tracking purposes. When submitting to the app store, if asked "Does this app use the Advertising Identifier (IDFA)?", choose 'Yes' and make sure to **check** the folllowing 3 boxes:
+ > 1.  “Attribute this app installation to a previously served advertisement”
+ > 2.  “Attribute an action taken within this app to a previously served advertisement”
+ > 3.  “I, YOUR_NAME, confirm that this app, and any third party…”
+>
+>You should  _not_  check the box labeled “Serve advertisements within the app” unless you are actually going to display ads. 
+
 <br>
 
-
 # <a id="Advanced Setup"></a>Advanced Setup
+
 Use the Advanced Setup (optional) in order to track visitor and customer customized actions and events.
 As described in [Tracking Custom Events](https://github.com/optimove-tech/SDK-Custom-Events-for-Your-Vertical), this step requires collaboration between you and Optimove’s Product Integration Team. Please contact your Optimove Customer Success Manager (CSM) or Optimove point of contact to schedule a meeting with the Product Integration team.
 

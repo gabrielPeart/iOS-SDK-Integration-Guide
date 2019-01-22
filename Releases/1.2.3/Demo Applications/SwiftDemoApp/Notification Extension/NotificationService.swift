@@ -16,7 +16,10 @@ class NotificationService: UNNotificationServiceExtension {
     var optimoveNotificationServiceExtension:OptimoveNotificationServiceExtension!
 
     override func didReceive(_ request: UNNotificationRequest, withContentHandler contentHandler: @escaping (UNNotificationContent) -> Void) {
-        let tenantInfo = NotificationExtensionTenantInfo(endpoint: "https://appcontrollerproject-developer.firebaseapp.com", token: "demo_apps", version: "1.0.0", appBundleId: "com.optimove.sdk.demo.swift")
+        let tenantInfo = NotificationExtensionTenantInfo(endpoint:"https://appcontrollerproject-developer.firebaseapp.com",
+                                                         token:"demo_apps",
+                                                         version: "1.0.0",
+                                                         appBundleId: "com.optimove.sdk.demo.swift")
         optimoveNotificationServiceExtension = OptimoveNotificationServiceExtension(tenantInfo: tenantInfo)
         optimoveNotificationServiceExtension.didReceive(request, withContentHandler: contentHandler)
         if !optimoveNotificationServiceExtension.isHandledByOptimove {

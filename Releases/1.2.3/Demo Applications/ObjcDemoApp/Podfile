@@ -4,6 +4,7 @@ use_modular_headers!
 
 target 'ObjcDemoApp' do
     pod 'OptimoveSDK', '1.2.3'
+    pod 'GoogleAppMeasurement','5.2.0'
 end
 
 target 'Notification Extension' do

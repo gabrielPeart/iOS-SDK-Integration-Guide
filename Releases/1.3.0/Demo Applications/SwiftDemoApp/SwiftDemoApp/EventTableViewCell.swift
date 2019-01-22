@@ -36,11 +36,11 @@ class EventTableViewCell: UITableViewCell {
         var event: OptimoveEvent
         switch customEventType
         {
-        case .string:
+        case .string?:
             event = StringEvent(stringInput)
-        case .number:
+        case .number?:
             event = NumberEvent(numberInput != nil ? NSNumber(value:numberInput!): nil)
-        case .combined:
+        case .combined?:
             event = CombinedEvent(stringInput, numberInput != nil ? NSNumber(value:numberInput!): nil)
         default: return
         }

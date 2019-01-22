@@ -11,7 +11,11 @@
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    OptimoveTenantInfo* info = [[OptimoveTenantInfo alloc] initWithUrl:@"https://appcontrollerproject-developer.firebaseapp.com" token:@"demo_apps" version:@"1.0.0" hasFirebase:NO useFirebaseMessaging:NO];
+    OptimoveTenantInfo* info = [[OptimoveTenantInfo alloc] initWithUrl:@"https://appcontrollerproject-developer.firebaseapp.com"
+                                                                 token:@"demo_apps"
+                                                               version:@"1.0.0" 
+                                                           hasFirebase:NO
+                                                  useFirebaseMessaging:NO];
 
     [Optimove.sharedInstance configureFor:info];
     

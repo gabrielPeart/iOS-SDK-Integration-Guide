@@ -1,5 +1,3 @@
-
-
 import Foundation
 import OptiTrackCore
 
@@ -44,5 +42,3 @@ class OptimoveQueue: Queue {
         completion()
     }
 }
-
-
