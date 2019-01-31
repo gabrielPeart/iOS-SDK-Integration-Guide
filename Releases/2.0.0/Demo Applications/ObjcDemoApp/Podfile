@@ -3,7 +3,7 @@ platform :ios, '10.0'
 use_modular_headers!
 
 target 'ObjcDemoApp' do
-    pod 'OptimoveSDK', :path => '/Users/elkanaoptimove/Developer/repos/OptimoveSDK_Native-iOS/OptimoveSDK/OptimoveSDK.podspec'
+    pod 'OptimoveSDK', 2.0.0
 end
 
 target 'Notification Extension' do
