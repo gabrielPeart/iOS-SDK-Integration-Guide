@@ -14,21 +14,18 @@ import Foundation
     @objc public var token                  : String
     @objc public var version                : String
     @objc public var hasFirebase            : Bool
-    @objc public var useFirebaseMessaging     : Bool
+
     
     
     @objc public init(url:String,
-                token: String,
-                version     : String,
-                hasFirebase : Bool,
-                useFirebaseMessaging: Bool
-        )
+                      token: String,
+                      version     : String,
+                      hasFirebase : Bool)
+
     {
         self.hasFirebase = hasFirebase
         self.url = url + "/mobilesdkconfig"
         self.token = token
         self.version = version
-        self.useFirebaseMessaging = useFirebaseMessaging
-        
     }
 }

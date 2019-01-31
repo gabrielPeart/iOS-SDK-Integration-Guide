@@ -216,6 +216,8 @@ extension Registrar: RegistrationProtocol
     func handleResponseFromMbaas(ofRequest mbaasRequest:MbaasRequestBody, withData data:Data?, error:OptimoveError?, url:URL,didComplete:((Bool) -> Void)? = nil) {
         //If the error code indicate a user error, there is no sense to retry this request again
         if let error = error, (error == .badRequest || error == .notFound || error == .gone) {
+            OptiLogger.error("\(mbaasRequest.operation.rawValue) error: \(String(describing: error.localizedDescription))")
+            didComplete?(false)
             return
         }
         guard error == nil else {

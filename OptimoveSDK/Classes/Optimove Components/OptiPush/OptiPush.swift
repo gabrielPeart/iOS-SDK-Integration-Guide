@@ -1,10 +1,6 @@
-
 //  Optipush.swift
 //  iOS-SDK
-//
-//  Created by Mobile Developer Optimove on 04/09/2017.
-//  Copyright © 2017 Optimove. All rights reserved.
-//
+
 
 import Foundation
 import UserNotifications
@@ -74,15 +70,13 @@ final class OptiPush: OptimoveComponent
         if isEnable {
             firebaseInteractor.unsubscribeFromTopic(topic: topic, didSucceed: didSucceed)
         } else {
-          didSucceed?(false)
+            didSucceed?(false)
         }
     }
     
     func performRegistration()
     {
-//        if OptimoveUserDefaults.shared.fcmToken != nil {
-            registrar?.register()
-//        }
+        registrar?.register()
     }
 }
 
@@ -91,29 +85,21 @@ extension OptiPush: OptimoveMbaasRegistrationHandling
     //MARK: - Protocol conformance
     func handleRegistrationTokenRefresh(token: String)
     {
-        guard let oldFCMToken = OptimoveUserDefaults.shared.fcmToken else {
+        guard let _ = OptimoveUserDefaults.shared.fcmToken else {
             handleFcmTokenReceivedForTheFirstTime(token)
             return
         }
-        
-        if (token != oldFCMToken) {
-            registrar?.unregister { (success) in
-                if success {
-                    self.updateFcmTokenWith(token)
-                    self.performRegistration()
-                    self.firebaseInteractor.subscribeToTopics(didSucceed: nil)
-                } else {
-                    self.updateFcmTokenWith(token)
-                }
-            }
+
+        registrar?.unregister { (success) in
+
+            //The order of the following operations matter
+            self.updateFcmTokenWith(token)
+            self.performRegistration()
+            self.firebaseInteractor.subscribeToTopics(didSucceed: nil)
         }
     }
     
-    func didReceiveFirebaseRegistrationToken(fcmToken:String)
-    {
-        firebaseInteractor.optimoveReceivedRegistrationToken(fcmToken)
-    }
-   
+
     private func handleFcmTokenReceivedForTheFirstTime(_ token: String)
     {
         OptiLogger.debug("Client receive a token for the first time")

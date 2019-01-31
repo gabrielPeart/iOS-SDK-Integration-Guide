@@ -1,9 +1,7 @@
 //
 //  OptimoveCustomEventDecorator.swift
 //  OptimoveSDK
-//
-//  Created by Elkana Orbach on 31/10/2018.
-//
+
 
 import Foundation
 
@@ -27,8 +25,14 @@ class OptimoveCustomEventDecorator: OptimoveEventDecorator {
             let normalizedKey = normalize(key)
             if let numValue =  value as? NSNumber, config.parameters[normalizedKey]!.type == "Boolean" {
                 normalizedParameters[normalizedKey] = Bool(truncating: numValue)
+                if normalizedKey != key {
+                    normalizedParameters[key] = nil
+                }
             } else {
                 normalizedParameters[normalizedKey] = value
+                if normalizedKey != key {
+                    normalizedParameters[key] = nil
+                }
             }
         }
         self.parameters = normalizedParameters

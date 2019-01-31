@@ -136,9 +136,9 @@ protocol OptimoveEventReporting:class
         OptimoveUserDefaults.shared.version = info.version
         OptimoveUserDefaults.shared.configurationEndPoint = info.url.last == "/" ? info.url : "\(info.url)/"
         OptimoveUserDefaults.shared.isClientHasFirebase = info.hasFirebase
-        OptimoveUserDefaults.shared.isClientUseFirebaseMessaging = info.useFirebaseMessaging
+
         OptimoveUserDefaults.shared.bundleId = Bundle.main.bundleIdentifier!
-        OptiLogger.debug("stored user info in local storage: \ntoken:\(info.token)\nversion:\(info.version)\nend point:\(info.url)\nhas firebase:\(info.hasFirebase)\nuse Messaging: \(info.useFirebaseMessaging)")
+        OptiLogger.debug("stored user info in local storage: \ntoken:\(info.token)\nversion:\(info.version)\nend point:\(info.url)\nhas firebase:\(info.hasFirebase)\n")
     }
     
     private func configureLogger()
@@ -146,6 +146,8 @@ protocol OptimoveEventReporting:class
 //        OptiLogger.configure()
         let consoleStream = OptiConsoleLog()
         OptiLogger.add(stream: consoleStream)
+        
+
     }
     
     private func setVisitorIdIfNeeded()
@@ -353,13 +355,8 @@ extension Optimove
             optiPush.unsubscribeFromTopic(topic: topic,didSucceed: didSucceed)
         }
     }
+
     
-    @objc public func optimove(didReceiveFirebaseRegistrationToken fcmToken: String )
-    {
-        if RunningFlagsIndication.isComponentRunning(.optiPush) {
-            optiPush.didReceiveFirebaseRegistrationToken(fcmToken: fcmToken)
-        }
-    }
     
     func performRegistration()
     {
@@ -433,7 +430,7 @@ extension Optimove
         if RunningFlagsIndication.isComponentRunning(.realtime) {
             if  config.supportedOnRealTime {
                 OptiLogger.debug("report \(event.name) to realtime")
-                realTime.report(event: event, withConfigs: config)
+                realTime.report(originalEvent: event, withConfigs: config)
             } else {
                 OptiLogger.debug("\(event.name) is not supported on realtime")
             }
@@ -452,50 +449,7 @@ extension Optimove
         self.reportEvent(customEvent)
     }
 
-    @objc public func reportScreenVisit(screenPath: String, url: URL? = nil, category: String? = nil)
-    {
-        var screenPath = screenPath
-        for prefix in ["https://www.", "http://www.", "https://", "http://"] {// Prefixes that shuold be removed. Order matters.
-            if screenPath.hasPrefix(prefix) {
-                screenPath.removeFirst(prefix.count)
-                break
-            }
-        }
-        self.reportScreenVisit(viewControllersIdentifiers: screenPath.components(separatedBy: "/"),
-                          url: url,
-                          category: category)
-    }
-
-
-
-    @objc public func reportScreenVisit(viewControllersIdentifiers: [String], url: URL? = nil, category: String? = nil)
-    {
-        OptiLogger.debug("user ask to report screen event")
-        guard !viewControllersIdentifiers.isEmpty else {
-            OptiLogger.error("trying to report screen visit with empty array")
-            return
-        }
-
-        let pageTitle = generateOptimovePageTitle(fromViewControllersIdentifiers:viewControllersIdentifiers)
-        let customUrl = generateOptimoveCustomUrl(fromProvided: url, andPageTitle: pageTitle)
-        
-        if RunningFlagsIndication.isComponentRunning(.optiTrack) {
-            optiTrack.reportScreenEvent(viewControllersIdentifiers: viewControllersIdentifiers, url: URL(string: customUrl)!,category: category)
-        }
-        if RunningFlagsIndication.isComponentRunning(.realtime) {
-            realTime.reportScreenEvent(customURL: customUrl, pageTitle: pageTitle, category: category)
-        }
-    }
-
-    private func generateOptimovePageTitle(fromViewControllersIdentifiers viewControllersIdentifiers: [String]) -> String
-    {
-        return viewControllersIdentifiers.joined(separator: "/")
-    }
-
-    private func generateOptimoveCustomUrl(fromProvided clientUrl:URL?, andPageTitle pageTitle:String) -> String
-    {
-        return (clientUrl != nil) ? clientUrl!.absoluteString : (Bundle.main.bundleIdentifier!).appending("/").appending(pageTitle).addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
-    }
+   
 }
 
 // MARK: - set user id API
@@ -509,11 +463,11 @@ extension Optimove
     /// - Parameter userID: the client unique identifier
     @objc public func set(userID: String)
     {
-        guard isValid(userId: userID) else {
+        let userId = userID.trimmingCharacters(in: .whitespaces)
+        guard isValid(userId: userId) else {
             OptiLogger.error("user id \(userID) is not valid")
             return
         }
-        let userId = userID.trimmingCharacters(in: .whitespaces)
 
 
         //TODO: Move to Optipush
@@ -598,7 +552,7 @@ extension Optimove
     /// - Returns: An indication of the validation of the provided user id
     private func isValid(userId:String) -> Bool
     {
-        return !userId.isEmpty && !userId.contains("undefined") && !(userId == "null")
+        return !userId.isEmpty && !userId.contains("undefined") && !(userId == "null") && (!userId.contains(" "))
     }
 
     private func isValid(email:String) -> Bool

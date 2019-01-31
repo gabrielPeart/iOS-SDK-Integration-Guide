@@ -1,9 +1,7 @@
 //
 //  OptimoveEventDecoratorFactory.swift
 //  FirebaseCore
-//
-//  Created by Elkana Orbach on 31/10/2018.
-//
+
 
 import Foundation
 

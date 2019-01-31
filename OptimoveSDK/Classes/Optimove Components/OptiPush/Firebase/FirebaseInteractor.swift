@@ -47,15 +47,16 @@ class FirebaseInteractor:NSObject,OptipushServiceInfra
     {
         FirebaseApp.configure(name: "sdkController", options:clientServiceOptions)
     }
-    
-    private func setMessaginDelegate()
-    {
-        if !OptimoveUserDefaults.shared.isClientUseFirebaseMessaging
+
+
+    fileprivate func registerIfTokenChanged(updatedFcmToken:String?) {
+        let isTokenNew = updatedFcmToken != nil && OptimoveUserDefaults.shared.fcmToken != updatedFcmToken
+        if isTokenNew
         {
-            Messaging.messaging().delegate = self
+            optimoveReceivedRegistrationToken(updatedFcmToken!)
         }
     }
-    
+
     func setupFirebase(from firebaseMetaData: FirebaseProjectKeys,
                        clientFirebaseMetaData:ClientsServiceProjectKeys,
                        delegate:OptimoveMbaasRegistrationHandling,
@@ -87,11 +88,15 @@ class FirebaseInteractor:NSObject,OptipushServiceInfra
 
         setupAppController(appController)
         setupSdkController(clientServiceOptions)
-        setMessaginDelegate()
-        if OptimoveUserDefaults.shared.fcmToken == nil && Messaging.messaging().fcmToken != nil{
-            optimoveReceivedRegistrationToken(Messaging.messaging().fcmToken!)
-        }
+//        setMessaginDelegate()
 
+        if let token = Messaging.messaging().fcmToken {
+            registerIfTokenChanged(updatedFcmToken: token)
+        } else {
+            NotificationCenter.default.addObserver(forName: NSNotification.Name.MessagingRegistrationTokenRefreshed, object: nil, queue: .main) { (notifiction) in
+                self.registerIfTokenChanged(updatedFcmToken: Messaging.messaging().fcmToken)
+            }
+        }
         OptiLogger.debug("firebase finish setup")
     }
     
@@ -108,11 +113,6 @@ class FirebaseInteractor:NSObject,OptipushServiceInfra
 
 extension FirebaseInteractor:MessagingDelegate
 {
-    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String)
-    {
-        optimoveReceivedRegistrationToken(fcmToken)
-    }
-    
     func retreiveFcmToken(for senderId: String, completion: @escaping (String) -> Void)
     {
         Messaging.messaging().retrieveFCMToken(forSenderID: senderId)
