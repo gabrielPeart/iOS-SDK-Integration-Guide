@@ -1,0 +1,11 @@
+# Uncomment the next line to define a global platform for your project
+platform :ios, '10.0'
+use_modular_headers!
+
+target 'ObjcDemoApp' do
+    pod 'OptimoveSDK', :path => '/Users/elkanaoptimove/Developer/repos/OptimoveSDK_Native-iOS/OptimoveSDK/OptimoveSDK.podspec'
+end
+
+target 'Notification Extension' do
+    pod 'OptimoveNotificationServiceExtension','1.3.0'
+end

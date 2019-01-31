@@ -51,6 +51,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1A6C208522012481002C1F11 /* MyCustomEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyCustomEvent.h; sourceTree = "<group>"; };
+		1A6C208622012573002C1F11 /* Notification Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Notification Extension.entitlements"; sourceTree = "<group>"; };
 		66E3F6AEF473F93D57C2531A /* Pods-Notification Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Notification Extension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Notification Extension/Pods-Notification Extension.debug.xcconfig"; sourceTree = "<group>"; };
 		672DDE5A200F358000193051 /* SetUserIdViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SetUserIdViewController.h; sourceTree = "<group>"; };
 		672DDE5B200F358000193051 /* SetUserIdViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SetUserIdViewController.m; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 				677AF6392014A467002CBA4F /* CombinedEvent.h */,
 				677AF63A2014A467002CBA4F /* CombinedEvent.m */,
 				67F2777F20F4820A00D2FA28 /* MyCustomEvent.m */,
+				1A6C208522012481002C1F11 /* MyCustomEvent.h */,
 				678873A320ED2304000B25F2 /* ObjcDemoApp-Bridging-Header.h */,
 				67313798210DCFCD00839DD0 /* MessagingImplementer.h */,
 				67313799210DCFCD00839DD0 /* MessagingImplementer.m */,
@@ -156,6 +159,7 @@
 		6788739720ED1D8C000B25F2 /* Notification Extension */ = {
 			isa = PBXGroup;
 			children = (
+				1A6C208622012573002C1F11 /* Notification Extension.entitlements */,
 				6788739820ED1D8C000B25F2 /* NotificationService.h */,
 				6788739920ED1D8C000B25F2 /* NotificationService.m */,
 				6788739B20ED1D8C000B25F2 /* Info.plist */,
@@ -238,6 +242,9 @@
 						LastSwiftMigration = 0940;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
 							com.apple.BackgroundModes = {
 								enabled = 1;
 							};
@@ -252,6 +259,11 @@
 					6788739520ED1D8C000B25F2 = {
 						CreatedOnToolsVersion = 9.4.1;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -542,6 +554,7 @@
 			baseConfigurationReference = 66E3F6AEF473F93D57C2531A /* Pods-Notification Extension.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_ENTITLEMENTS = "Notification Extension/Notification Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LDTF4M4FTC;
 				INFOPLIST_FILE = "Notification Extension/Info.plist";
@@ -560,6 +573,7 @@
 			baseConfigurationReference = FFA9011B917ED584F0D0840E /* Pods-Notification Extension.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_ENTITLEMENTS = "Notification Extension/Notification Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LDTF4M4FTC;
 				INFOPLIST_FILE = "Notification Extension/Info.plist";
